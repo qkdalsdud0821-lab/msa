@@ -2,6 +2,20 @@ server.port: 7003
 server.error.include-message: always
 spring.web.error.include-message: always
 
+spring.application.name: recommendation
+
+app.eureka-server: localhost
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${app.eureka-server}:8761/eureka/
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    registryFetchIntervalSeconds: 5
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 5
+
 spring.mongodb:
   host: localhost
   port: 27017
@@ -51,6 +65,8 @@ management.endpoints.web.exposure.include: "*"
 spring.config.activate.on-profile: docker
 
 server.port: 8080
+
+app.eureka-server: eureka
 
 spring.mongodb.host: mongodb
 
