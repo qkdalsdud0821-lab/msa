@@ -191,8 +191,8 @@ do
   [[ "$n" == "4" ]] && break
   sleep 2
 done
-assertCurl 200 "curl -H "accept:application/json" $HOST:8761/eureka/apps -s"
-assertEqual 4 $(echo $RESPONSE | jq ".applications.application | length")
+assertCurl 200 "curl -H "accept:application/json" $HOST:$PORT/eureka/api/apps -s"
+assertEqual 5 $(echo $RESPONSE | jq ".applications.application | length")
 
 setupTestdata
 
